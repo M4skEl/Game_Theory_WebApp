@@ -3,6 +3,11 @@ import {useState} from 'react'
 import {processing} from '../utils/coefProcessing.js'
 import {numericalMethod} from '../utils/numerical.js'
 
+import {PreviousBtn, NextBtn, ToLastBtn} from './components/buttons.jsx'
+import {OneAnswer, FinalAnswer} from './components/AnswersRender.jsx'
+import {Matrix} from './components/Matrix.jsx'
+import {InputFunction, SubmitFunctionBtn} from './components/inputFunction.jsx'
+
 export const SecondLabPage = () => {
 
 
@@ -21,6 +26,10 @@ export const SecondLabPage = () => {
 
   const [haveSolution, setHaveSolutions] = useState(false)
 
+  const calculate = (coeffs) => {
+    setSolutions(numericalMethod(processing(coeffs)))
+    setHaveSolutions(true)
+  }
 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
@@ -35,108 +44,40 @@ export const SecondLabPage = () => {
       <div className={styles.mainContainer}>
 
         <div className={styles.inputContainer}>
-          <div className={styles.functionContainer}>
-            f =
-            <input type='text' onChange={handleInputChange} value={coefficients.a} name='a' placeholder='a'
-                   className={styles.coefficientInput}/> x^2 +
-            <input type='text' onChange={handleInputChange} value={coefficients.b} name='b' placeholder='b'
-                   className={styles.coefficientInput}/> y^2 +
-            <input type='text' onChange={handleInputChange} value={coefficients.c} name='c' placeholder='c'
-                   className={styles.coefficientInput}/> xy +
-            <input type='text' onChange={handleInputChange} value={coefficients.d} name='d' placeholder='d'
-                   className={styles.coefficientInput}/> x +
-            <input type='text' onChange={handleInputChange} value={coefficients.e} name='e' placeholder='e'
-                   className={styles.coefficientInput}/> y
-          </div>
-          <button className={styles.submitButton} onClick={() => {
-            console.log(
-                processing(coefficients),
-                numericalMethod(processing(coefficients))
-            )
-            setSolutions(numericalMethod(processing(coefficients)))
-            setHaveSolutions(true)
-          }}>
-            Провести вычисления
-          </button>
+          <InputFunction coefficients={coefficients} handleInputChange={handleInputChange}/>
+          <SubmitFunctionBtn coefficients={coefficients} calculate={calculate}/>
         </div>
 
         {haveSolution &&
             <>
               <div className={styles.answerContainer}>
 
-
                 <div className={styles.btnContainer}>
-                  <button className={styles.previousBtn}
-                          onClick={() => {
-                            const number = (matrixNumber === 0) ? solutions.slice(0, 10).length - 1 : matrixNumber - 1
-                            setMatrixNumber(number)
-                          }}>
-                    Назад
-                  </button>
+                  <PreviousBtn solutions={solutions} matrixNumber={matrixNumber} setMatrixNumber={setMatrixNumber}/>
                 </div>
-
 
                 <div className={styles.matrixContainer}>
-                  <div>
-                    {
-                      solutions.slice(0, 10)[matrixNumber]?.mtr?._data?.map((row, i) => (
-                          <div key={i} className={styles.rowContainer}>
-                            {row.map((column, j) => {
-                              const isHighlighted = (i == solutions[matrixNumber]?.chooseX) && (j == solutions[matrixNumber]?.chooseY);
-                              const cellClassName = isHighlighted ? styles.matrixElementBright : styles.matrixElement;
-                              return (
-                                  <div key={j} className={cellClassName}>
-                                    {solutions[matrixNumber]?.mtr?._data[i][j]}
-                                  </div>)
-                            })}
-                          </div>
-                      ))
-                    }
-                  </div>
-                  <div>{
-                    <div>
-                      {solutions.slice(0, 10)[matrixNumber]?.saddle && <h4>ЕСТЬ седловая точка</h4>}
-                      <h4>
-                        ВЫБОР ИГРОКА А = {solutions.slice(0, 10)[matrixNumber]?.x},
-                        ВЫБОР ИГРОКА B = {solutions.slice(0, 10)[matrixNumber]?.y},
-                        Цена игры = {solutions.slice(0, 10)[matrixNumber]?.price}
-                      </h4>
-                    </div>
-                  }
+                  <Matrix solutions={solutions} matrixNumber={matrixNumber}/>
+                  <div className={styles.oneAnswerContainer}>
+                    <OneAnswer solutions={solutions} matrixNumber={matrixNumber}/>
                   </div>
                 </div>
 
                 <div className={styles.btnContainer}>
-                  <button className={styles.nextBtn}
-                          onClick={() => setMatrixNumber((matrixNumber + 1) % solutions.slice(0, 10).length)}>Вперед
-                  </button>
+                  <NextBtn solutions={solutions} matrixNumber={matrixNumber} setMatrixNumber={setMatrixNumber}/>
                 </div>
-
 
                 <div className={styles.btnContainer}>
-                  <button
-                      onClick={() => setMatrixNumber(solutions.slice(0, 10).length - 1)}>к последнему
-                  </button>
+                  <ToLastBtn solutions={solutions} setMatrixNumber={setMatrixNumber}/>
                 </div>
 
               </div>
 
-              <div>{
-                <div>
-                  <h1>Окончательный ответ</h1>
-                  {solutions[solutions.length - 1]?.saddle && <h2>ЕСТЬ седловая точка</h2>}
-                  <h2>ВЫБОР ИГРОКА А {solutions[solutions.length - 1]?.x}</h2>
-                  <h2>ВЫБОР ИГРОКА B {solutions[solutions.length - 1]?.y}</h2>
-                  <h2>Цена игры {solutions[solutions.length - 1]?.price}</h2>
-                </div>
-              }
+              <div className={styles.finalAnswerContainer}>
+                <FinalAnswer solutions={solutions}/>
               </div>
-            </>}
-
+            </>
+        }
       </div>
-
-
   )
-
-
 }

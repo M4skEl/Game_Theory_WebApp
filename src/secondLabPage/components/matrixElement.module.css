@@ -1,0 +1,14 @@
+.rowContainer {
+    display: flex
+}
+.matrixElement {
+    width:5rem;
+    height: 2rem;
+    border: 1px solid gray;
+}
+.matrixElementBright{
+    width:5rem;
+    height: 2rem;
+    border: 1px solid gray;
+    background: red
+}
