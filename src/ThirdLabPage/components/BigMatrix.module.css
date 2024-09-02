@@ -1,0 +1,26 @@
+.rowContainer {
+    display: flex
+}
+.matrixElement {
+    width:7rem;
+    height: 3rem;
+    border: 1px solid gray;
+}
+.matrixElementBright{
+    width:7rem;
+    height: 3rem;
+    border: 1px solid gray;
+    background: purple
+}
+.matrixElementPareto{
+    width:7rem;
+    height: 3rem;
+    border: 1px solid gray;
+    background: red;
+}
+.matrixElementNash{
+    width:7rem;
+    height: 3rem;
+    border: 1px solid gray;
+    background: blue;
+}

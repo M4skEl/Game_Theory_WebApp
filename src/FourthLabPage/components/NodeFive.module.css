@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width:330px;
+
+}
+
+.Arrows {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+}
+
+
+.circle {
+    display:flex;
+    flex-direction: column;
+    border-radius: 100%;
+    background-color: #224f6f;
+    width: 4rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center
+}
+
+.leftArrow {
+    width: 200px;
+    height: 5px;
+    background-color: white;
+    rotate: -25deg;
+}
+
+.rightArrow {
+    width: 200px;
+    height: 5px;
+    background-color: white;
+    rotate: 25deg;
+}
+
+.leftArrowGreen {
+    width: 200px;
+    height: 5px;
+    background-color: green;
+    rotate: -25deg;
+}
+
+.rightArrowGreen {
+    width: 200px;
+    height: 5px;
+    background-color: green;
+    rotate: 25deg;
+}

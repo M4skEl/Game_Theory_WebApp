@@ -1,4 +1,4 @@
-import styles from "../secondLabPage.module.css";
+import styles from "./buttons.module.css";
 import PropTypes from 'prop-types';
 
 export const PreviousBtn = (props) => {
@@ -7,11 +7,9 @@ export const PreviousBtn = (props) => {
     matrixNumber: PropTypes.any,
     setMatrixNumber: PropTypes.any
   }
-  // eslint-disable-next-line react/prop-types
+
   const solutions = props.solutions
-  // eslint-disable-next-line react/prop-types
   const matrixNumber = props.matrixNumber
-  // eslint-disable-next-line react/prop-types
   const setMatrixNumber = props.setMatrixNumber
 
   return (
@@ -20,8 +18,10 @@ export const PreviousBtn = (props) => {
                 const number = (matrixNumber === 0) ? solutions.slice(0, 10).length - 1 : matrixNumber - 1
                 setMatrixNumber(number)
               }}>
-        Назад
+        <div className={styles.triangleLeft}>
+        </div>
       </button>
+
   )
 }
 
@@ -39,7 +39,9 @@ export const NextBtn = (props) => {
 
   return (
       <button className={styles.nextBtn}
-              onClick={() => setMatrixNumber((matrixNumber + 1) % solutions.slice(0, 10).length)}>Вперед
+              onClick={() => setMatrixNumber((matrixNumber + 1) % solutions.slice(0, 10).length)}>
+        <div className={styles.triangleRight}>
+        </div>
       </button>
   )
 }
@@ -54,8 +56,12 @@ export const ToLastBtn = (props) => {
   //const matrixNumber = props.matrixNumber
   const setMatrixNumber = props.setMatrixNumber
   return (
-      <button
-          onClick={() => setMatrixNumber(solutions.slice(0, 10).length - 1)}>к последнему
+      <button className = {styles.toLastBtn}
+          onClick={() => setMatrixNumber(solutions.slice(0, 10).length - 1)}>
+        <div className={styles.triangleRightDouble}>
+        </div>
+        <div className={styles.triangleRightDouble}>
+        </div>
       </button>
   )
 }

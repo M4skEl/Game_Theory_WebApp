@@ -5,14 +5,15 @@ import './App.css'
 
 
 import {SecondLabPage} from './secondLabPage/secondLabPage.jsx'
-
+import {ThirdLabPage} from './ThirdLabPage/ThirdLabPage.jsx'
+import {FourthLabPage} from './FourthLabPage/FourthLabPage.jsx'
 function App() {
   //const [count, setCount] = useState(0)
 
   return (
       <>
 
-        <SecondLabPage/>
+        <FourthLabPage/>
 
       </>
   )

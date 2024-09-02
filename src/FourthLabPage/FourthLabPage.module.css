@@ -1,0 +1,73 @@
+.container {
+    overflow-x: scroll;
+    overflow-y: scroll;
+    font-size: 0.7rem;
+}
+
+.Turn{
+    font-size:3rem;
+}
+
+.Level7Container {
+    margin-left: 125px;
+    display: flex;
+}
+
+.Level6Container {
+    display: flex;
+
+}
+
+.sixNodeContainer {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 25px;
+}
+
+.fiveNodeContainer {
+    margin-left: 235px;
+    margin-right: 235px;
+    margin-bottom: 75px;
+}
+
+.fourNodeContainer {
+    margin-left: 600px;
+    margin-right: 600px;
+    margin-bottom: 75px;
+}
+
+.threeNodeContainer {
+    margin-left: 1400px;
+    margin-right: 1400px;
+    margin-bottom: 75px;
+}
+
+.Level2Container {
+    width: 100%;
+    display: flex;
+}
+
+.twoNodeContainer {
+    margin-left: 3000px;
+    margin-right: 3000px;
+    margin-bottom: 100px;
+}
+
+.oneNodeContainer {
+    margin-left: 6200px;
+    margin-right: 6200px;
+    margin-bottom: 75px;
+}
+
+.zeroNodeContainer {
+    margin-left: 12800px;
+
+    margin-bottom: 75px;
+}
+
+
+.Btn {
+    font-size: 5rem;
+    width: 1000px;
+    height: 300px;
+}

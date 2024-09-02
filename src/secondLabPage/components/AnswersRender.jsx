@@ -33,10 +33,9 @@ export const FinalAnswer = (props) => {
   return (
       <div>
         <h1>Окончательный ответ</h1>
-        {solutions[solutions.length - 1]?.saddle && <h2>ЕСТЬ седловая точка</h2>}
-        <h2>ВЫБОР ИГРОКА А {solutions[solutions.length - 1]?.x}</h2>
-        <h2>ВЫБОР ИГРОКА B {solutions[solutions.length - 1]?.y}</h2>
-        <h2>Цена игры {solutions[solutions.length - 1]?.price}</h2>
+        <h2>ВЫБОР ИГРОКА А {solutions[solutions.length - 1]?.x.toFixed(1)}</h2>
+        <h2>ВЫБОР ИГРОКА B {solutions[solutions.length - 1]?.y.toFixed(1)}</h2>
+        <h2>Цена игры {solutions[solutions.length - 1]?.price.toFixed(1)}</h2>
       </div>
   )
 }
